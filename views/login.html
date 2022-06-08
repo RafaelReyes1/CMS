@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="utf-8">
+ <link rel="stylesheet"  href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">  
+    <title>LOGIN</title>
+</head>
+<body>
+<h1>Iniciar Sesion </h1>
+<form action="#" method="post" accept-charset="utf-8">             <div class="input_holder">                 <span><i class="fa fa-user"></i></span><input type="text" name="txtUsuario" id="txtUsuario" placeholder="Digite su usuario" required>             </div>             <div class="input_holder"> 
+                <span><i class="fa fa-lock"></i></span><input type="password" name="txtPassword" id="txtPassword" placeholder="Digite su password" required>             </div>             <button class="submit_button" id="process">Entrar <span class="glyphicon glyphicon-log-in" ariahidden="true"></span></button>             <br><br>             <div role="alert" class="alert alert-info" id="respuesta"></div>         </form>                  <script>             window.onload = function()              {     var p = document.getElementById("txtPassword");  
+    p.onfocus = function()      {      document.querySelector(".img_holder").className += " password";     }  
+    p.onblur = function()      {      document.querySelector(".password").className = "img_holder";     }  
+    document.querySelector("body").className = "";    }         </script>  
+    <!-- Optional JavaScript -->     <!-- jQuery first, then Popper.js, then Bootstrap JS -->     <script src="assets/bootstrap/dist/js/jquery-3.2.1.min.js"></script>     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>     <script src="assets/bootstrap/dist/js/bootstrap.min.js"></script>     <script src="assets/sha512.js"></script>          <script>       $(document).ready(function(){         $("#process").click(function(event){ //Agregamos un evento clic nuevo a nuestro boton procesar         event.preventDefault();         us = $("#txtUsuario").val();         pw = SHA512($("#txtPassword").val()); //Aqui utilizamos una funcion que se encuentra en nuestro archivo sha512.js  
+        $.ajax({           method: 'post',           url: 'controllers/userController.php', //Este archivo procesara la informacion que enviemos            data: {usuario:us, clave:pw},           success: function(data) 
+          {             $("#respuesta").html(data);
+
+</body>
+</html>
